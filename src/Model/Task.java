@@ -15,6 +15,7 @@ public class Task {
         this.status = status;
     }
 
+
     public TaskStatus getStatus() {
         return status;
     }
@@ -46,7 +47,6 @@ public class Task {
     public void setId(int id) {
         this.id = id;
     }
-
 
 
     @Override

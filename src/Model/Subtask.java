@@ -1,17 +1,12 @@
 package Model;
 
-public class Subtask extends Task{
+public class Subtask extends Task {
     private int epicId;
 
-
-
-
-
-
-    public Subtask(String title, String description, TaskStatus status, int epicId){
+    public Subtask(String title, String description, TaskStatus status, int epicId) {
         setTitle(title);
         setDescription(description);
-        this.epicId=epicId;
+        this.epicId = epicId;
 
         setStatus(status);
     }
@@ -27,7 +22,7 @@ public class Subtask extends Task{
                 ", description='" + getDescription() + '\'' +
                 ", id=" + getId() +
                 ", status='" + getStatus() + '\'' +
-                ", EpicId='"+getEpicId()+'\''+
+                ", EpicId='" + getEpicId() + '\'' +
                 '}';
     }
 
