@@ -7,8 +7,7 @@ public class Epic extends Task {
     private ArrayList<Integer> epicSubtasksId = new ArrayList<>();
 
     public Epic(String title, String description) {
-        setTitle(title);
-        setDescription(description);
+        super(title,description,TaskStatus.NEW);
     }
 
     public void setEpicSubtasksId(int id) {

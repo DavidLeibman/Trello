@@ -16,33 +16,22 @@ public class TaskManager {
     HashMap<Integer, Epic> epicsMapById = new HashMap<>();
 
     public ArrayList<Task> getAllTasksList() {
-        ArrayList<Task> list = new ArrayList<>();
-        for (Integer tasksMapByIdKey : tasksMapById.keySet()) {
-            list.add(tasksMapById.get(tasksMapByIdKey));
-        }
-        return list;
+
+        return new ArrayList<>(tasksMapById.values());
     }
 
     public ArrayList<Task> getAllEpicsList() {
-        ArrayList<Task> list = new ArrayList<>();
-        for (Integer epicsMapByIdKey : epicsMapById.keySet()) {
-            list.add(tasksMapById.get(epicsMapByIdKey));
-        }
 
-        return list;
+        return new ArrayList<>(epicsMapById.values());
     }
 
     public ArrayList<Task> getAllSubtasksList() {
-        ArrayList<Task> list = new ArrayList<>();
-        for (Integer subtasksMapByIdKey : epicsMapById.keySet()) {
-            list.add(tasksMapById.get(subtasksMapByIdKey));
-        }
-        return list;
+
+        return new ArrayList<>(subtasksMapById.values());
     }
 
     public void removeAllTasks() {
         tasksMapById.clear();
-
     }
 
     public void removeAllEpics() {
@@ -51,9 +40,13 @@ public class TaskManager {
 
     public void removeAllSubtasks() {
         subtasksMapById.clear();
+        for (Epic epic : epicsMapById.values()) {
+            epic.setStatus(TaskStatus.NEW);
+            epic.getEpicSubtasksId().clear();
+        }
     }
 
-    public void removerTaskById(int id) {
+    public void removeTaskById(int id) {
 
         tasksMapById.remove(id);
     }
@@ -73,15 +66,15 @@ public class TaskManager {
         Subtask subtask = subtasksMapById.get(id);
         Epic epic = epicsMapById.get(subtask.getEpicId());
         epic.getEpicSubtasksId().remove((Integer) id);
+        updateEpicStatus(epic);
         subtask.setEpicId(0);//обнуление EpicId  у Subtask так как они больше не связаны
         subtasksMapById.remove(id);
-
     }
-
 
     public Task getTaskById(int id) {
         return tasksMapById.get(id);
     }
+
 
     public Task getSubtaskById(int id) {
         return subtasksMapById.get(id);
@@ -91,22 +84,17 @@ public class TaskManager {
         return epicsMapById.get(id);
     }
 
-
     public void createTask(Task task) {
-
         task.setId(uniqueID++);
         tasksMapById.put(task.getId(), task);
-
     }
 
     public void createEpic(Epic epic) {
         epic.setId(uniqueID++);
-
         if (epic.getEpicSubtasksId().isEmpty()) {
             epic.setStatus(TaskStatus.NEW);
         }
         epicsMapById.put(epic.getId(), epic);
-
     }
 
     public void createSubtask(Subtask subtask) {
@@ -116,10 +104,8 @@ public class TaskManager {
             Epic epic = epicsMapById.get(subtask.getEpicId());
             epic.setEpicSubtasksId(subtask.getId());
             updateEpicStatus(epic);
-
         }
     }
-
 
     public ArrayList<Subtask> getEpicSubtasks(Epic epic) {
         ArrayList<Subtask> list = new ArrayList<>();
@@ -130,16 +116,15 @@ public class TaskManager {
     }
 
     private void updateEpicStatus(Epic epic) {
-
-        Set<TaskStatus> epicSubtasksStatus = new HashSet<>();
+        Set<TaskStatus> uniqueSubtasksStatus = new HashSet<>();
 
         for (Integer subtaskId : epic.getEpicSubtasksId()) {
             Subtask subtask = subtasksMapById.get(subtaskId);
-            epicSubtasksStatus.add(subtask.getStatus());
+            uniqueSubtasksStatus.add(subtask.getStatus());
         }
-        if (epicSubtasksStatus.size() <= 1 & epicSubtasksStatus.contains(TaskStatus.NEW)) {
+        if (uniqueSubtasksStatus.size() <= 1 && uniqueSubtasksStatus.contains(TaskStatus.NEW)) {
             epic.setStatus(TaskStatus.NEW);
-        } else if (epicSubtasksStatus.size() <= 1 & epicSubtasksStatus.contains(TaskStatus.DONE)) {
+        } else if (uniqueSubtasksStatus.size() <= 1 && uniqueSubtasksStatus.contains(TaskStatus.DONE)) {
             epic.setStatus(TaskStatus.DONE);
         } else {
             epic.setStatus(TaskStatus.IN_PROGRESS);
@@ -147,7 +132,6 @@ public class TaskManager {
     }
 
     public void updateTaskStatus(Task task, TaskStatus status) {
-
         task.setStatus(status);
     }
 
