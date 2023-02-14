@@ -6,16 +6,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryHistoryManager implements HistoryManager {
-    private List<Task> lastVisit = new ArrayList<>();
-    private List<Integer> taskIdRequest = new ArrayList<>();
-    private List<Integer> epicIdRequest = new ArrayList<>();
-    private List<Integer> subtaskIdRequest = new ArrayList<>();
+    public List<Task> History = new ArrayList<>();
 
+    @Override
+    public void add(Task task) {
+        if (History.size() == 10) {
+            History.remove(0);
+        }
+        History.add(task);
+    }
 
-    public void add(Task task) {}
-
-    public List<Task> getHistory(){
-       return lastVisit;
+    @Override
+    public List<Task> getHistory() {
+        return History;
     }
 
 }

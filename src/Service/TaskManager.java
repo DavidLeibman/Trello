@@ -3,10 +3,8 @@ package Service;
 import Model.Epic;
 import Model.Subtask;
 import Model.Task;
-import Model.TaskStatus;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public interface TaskManager {
     ArrayList<Task> getAllTasksList();
@@ -41,11 +39,6 @@ public interface TaskManager {
 
     ArrayList<Subtask> getEpicSubtasks(Epic epic);
 
-    void updateTaskStatus(Task task, TaskStatus status);
+    HistoryManager getHistoryManager();
 
-    void updateSubtaskStatus(Subtask subtask, TaskStatus status);
-
-    void updateEpicStatus(Epic epic);
-
-    List<Task> getHistory();
 }

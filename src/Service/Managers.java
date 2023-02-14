@@ -1,11 +1,11 @@
 package Service;
 
-public class Managers<T extends TaskManager> {
-    private T taskManager;
-    public T getDefault(){
-        return null;
+public class Managers {
+    public static TaskManager getDefault() {
+        return new InMemoryTaskManager();
     }
-    public HistoryManager getDefaultHistory(){
-     return null;
+
+    public static HistoryManager getHistoryDefault() {
+        return new InMemoryHistoryManager();
     }
 }
