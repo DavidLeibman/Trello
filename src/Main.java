@@ -1,13 +1,13 @@
-import Model.Epic;
-import Model.Subtask;
-import Model.Task;
-import Model.TaskStatus;
-import Service.InMemoryTaskManager;
-import Service.TaskManager;
+import model.Epic;
+import model.Subtask;
+import model.Task;
+import model.TaskStatus;
+import service.Managers;
+import service.TaskManager;
 
 public class Main {
     public static void main(String[] args) {
-        TaskManager taskManager = new InMemoryTaskManager();
+        TaskManager taskManager = Managers.getDefault();
         Task task = new Task("Пойти на работу", "", TaskStatus.NEW);
         taskManager.createTask(task);
 

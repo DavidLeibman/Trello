@@ -1,9 +1,9 @@
-package Service;
+package service;
 
-import Model.Epic;
-import Model.Subtask;
-import Model.Task;
-import Model.TaskStatus;
+import model.Epic;
+import model.Subtask;
+import model.Task;
+import model.TaskStatus;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,7 +11,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class InMemoryTaskManager implements TaskManager {
-    private HistoryManager historyManager;
+    HashMap<Integer, Task> tasksMapById = new HashMap<>();
+    HashMap<Integer, Subtask> subtasksMapById = new HashMap<>();
+    HashMap<Integer, Epic> epicsMapById = new HashMap<>();
+    private final HistoryManager historyManager;
+    private int uniqueID;
 
     public InMemoryTaskManager() {
         historyManager = Managers.getHistoryDefault();
@@ -22,11 +26,6 @@ public class InMemoryTaskManager implements TaskManager {
         return historyManager;
     }
 
-    private int uniqueID;
-
-    HashMap<Integer, Task> tasksMapById = new HashMap<>();
-    HashMap<Integer, Subtask> subtasksMapById = new HashMap<>();
-    HashMap<Integer, Epic> epicsMapById = new HashMap<>();
 
     @Override
     public ArrayList<Task> getAllTasksList() {
@@ -140,6 +139,21 @@ public class InMemoryTaskManager implements TaskManager {
             list.add(subtasksMapById.get(subtaskId));
         }
         return list;
+    }
+
+    @Override
+    public void updateTask(Task task) {
+        tasksMapById.put(task.getId(), task);
+    }
+
+    @Override
+    public void updateEpic(Epic epic) {
+        epicsMapById.put(epic.getId(), epic);
+    }
+
+    @Override
+    public void updateSubtask(Subtask subtask) {
+        subtasksMapById.put(subtask.getId(), subtask);
     }
 
 
