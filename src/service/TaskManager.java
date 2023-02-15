@@ -5,6 +5,7 @@ import model.Subtask;
 import model.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface TaskManager {
     ArrayList<Task> getAllTasksList();
@@ -38,13 +39,12 @@ public interface TaskManager {
     void createSubtask(Subtask subtask);
 
     void updateTask(Task task);
+
     void updateEpic(Epic epic);
+
     void updateSubtask(Subtask subtask);
 
     ArrayList<Subtask> getEpicSubtasks(Epic epic);
 
-    HistoryManager getHistoryManager();/* зачем тут писать метод, который возрашать List айдишников тасков
-    если у нас в интерфейсе HistoryManager уже есть метод который возращает лист просмотренных тасков?
-    А этот метод я написал так как поле historyManager -private и хотелось бы через объект inMemoryTaskManager
-    вызывать метод getHistory()*/
+    List<Task> getHistory();
 }

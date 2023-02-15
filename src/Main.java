@@ -25,44 +25,44 @@ public class Main {
 
 
         taskManager.getTaskById(task.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getEpicById(epic.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask1.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getEpicById(epic1.getId());
         System.out.println();
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getEpicById(epic1.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
         taskManager.getSubtaskById(subtask2.getId());
-        System.out.println(taskManager.getHistoryManager().getHistory());
+        System.out.println(taskManager.getHistory());
         System.out.println();
     }
 }
