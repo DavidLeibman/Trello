@@ -6,7 +6,6 @@ import java.util.*;
 import service.CustomLinkedList.Node;
 
 public class InMemoryHistoryManager implements HistoryManager {
-//    private final List<Integer> history = new ArrayList<>();
     private final CustomLinkedList customLinkedList;
     private final Map<Integer, Node> nodeMap;
 
