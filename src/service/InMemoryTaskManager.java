@@ -14,6 +14,10 @@ public class InMemoryTaskManager implements TaskManager {
     private final HistoryManager historyManager;
     private int id;
 
+    public HistoryManager getHistoryManager() {
+        return historyManager;
+    }
+
     public InMemoryTaskManager() {
         historyManager = Managers.getHistoryDefault();
     }

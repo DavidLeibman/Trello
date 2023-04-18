@@ -8,6 +8,7 @@ public class Epic extends Task {
 
     public Epic(String title, String description) {
         super(title,description,TaskStatus.NEW);
+        this.setType(Type.EPIC);
     }
 
     public void setEpicSubtasksId(int id) {
@@ -20,13 +21,13 @@ public class Epic extends Task {
 
     @Override
     public String toString() {
-        return "Epic{" +
-                "title='" + getTitle() + '\'' +
-                ", description='" + getDescription() + '\'' +
-                ", id=" + getId() +
-                ", status='" + getStatus() + '\'' +
-                ", epicSubtasksId.size()= '" + epicSubtasksId.size() + '\'' +
-                '}';
+        return String.format("%d,%s,%s,%s,%s",
+                getId(),
+                getType().toString(),
+                getTitle(),
+                getStatus().toString(),
+                getDescription()
+        );
     }
 
 

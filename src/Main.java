@@ -22,20 +22,23 @@ class test {
         taskManager.createSubtask(subtask1);
         Subtask subtask2 = new Subtask("Подойти к кассе", "", TaskStatus.NEW, epic.getId());
         taskManager.createSubtask(subtask2);
-
-        Epic epic1 = new Epic("Сходить в магазин", "купить продукты на неделю");
-        taskManager.createEpic(epic1);
+        Task task =new Task("","",TaskStatus.NEW);
+        taskManager.createTask(task);
+        System.out.println(subtask);
+//        Epic epic1 = new Epic("Сходить в магазин", "купить продукты на неделю");
+//        taskManager.createEpic(epic1);
         taskManager.getEpicById(epic.getId());
         taskManager.getSubtaskById(subtask.getId());
         taskManager.getSubtaskById(subtask1.getId());
         taskManager.getSubtaskById(subtask2.getId());
-        taskManager.getEpicById(epic1.getId());
-        System.out.println(taskManager.getHistory());
-        taskManager.getEpicById(epic.getId());
-
-        System.out.println(taskManager.getHistory());
-        taskManager.removeEpicById(epic.getId());
-        System.out.println(taskManager.getHistory());
+        taskManager.getTaskById(task.getId());
+//        taskManager.getEpicById(epic1.getId());
+//        System.out.println(taskManager.getHistory());
+//        taskManager.getEpicById(epic.getId());
+//
+//        System.out.println(taskManager.getHistory());
+//        taskManager.removeEpicById(epic.getId());
+//        System.out.println(taskManager.getHistory());
     }
 
 }

@@ -52,7 +52,6 @@ public class CustomLinkedList {
         List<Task> list = new ArrayList<>();
         Node current = head;
         while (current != null) {
-
             list.add(current.task);
             current = current.next;
         }
