@@ -69,13 +69,6 @@ public class Task {
                 getDescription()
                 );
     }
-//    public String toString() {
-//        return "Task{" +
-//                "title='" + title + '\'' +
-//                ", description='" + description + '\'' +
-//                ", id=" + id +
-//                ", status='" + status + '\'' +
-//                '}';
-//    }
+
 
 }

@@ -101,16 +101,17 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         String title = tokens[2];
         TaskStatus status = TaskStatus.valueOf(tokens[3]);
         String description = tokens[4];
+        Task task;
         if (type.equals(Type.TASK)) {
-            Task task = new Task(title, description, status);
+            task = new Task(title, description, status);
             task.setId(id);
             task.setType(type);
         } else if (type.equals(Type.EPIC)) {
-            return new Epic(title, description);
-        } else
-            new Subtask(title, description, status, Integer.parseInt(tokens[5]));
-        return new Subtask(title, description, status, Integer.parseInt(tokens[5]));
-
+            task = new Epic(title, description);
+        } else {
+            task = new Subtask(title, description, status, Integer.parseInt(tokens[5]));
+        }
+        return task;
     }
 
     public static FileBackedTasksManager loadFromFile(File file) throws IOException {
