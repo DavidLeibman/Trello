@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class FileBackedTasksManager extends InMemoryTaskManager {
     private final File saveFile;
 
+
     public FileBackedTasksManager(String filePath) {
         super();
         saveFile = new File(filePath);
@@ -89,7 +90,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
             writer.write(historyToString(getHistoryManager()));
             writer.flush();
         } catch (IOException e) {
-            throw new RuntimeException("Unable to save tasks to file: " + e.getMessage());
+            throw new ManagerSaveException("Unable to save tasks to file: " + e.getMessage());
         }
     }
 
@@ -157,9 +158,9 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         for (Task task : history) {
             list.add(task.getId());
         }
-        Iterator <Integer> iterator =list.iterator();
+        Iterator<Integer> iterator = list.iterator();
         StringBuilder sb = new StringBuilder();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             Integer number = iterator.next();
             sb.append(number);
             if (iterator.hasNext()) {
@@ -171,7 +172,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     }
 
     public static void main(String[] args) {
-FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager("TestFile.csv");
+        FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager("TestFile.csv");
         Epic epic = new Epic("Поменять валюту", "обмен рублей на доллары");
         fileBackedTasksManager.createEpic(epic);
         fileBackedTasksManager.getEpicById(epic.getId());
@@ -183,10 +184,11 @@ FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager("Test
 
         Subtask subtask2 = new Subtask("Подойти к кассе", "", TaskStatus.NEW, epic.getId());
         fileBackedTasksManager.createSubtask(subtask2);
-        Task task =new Task("","",TaskStatus.NEW);
+        Task task = new Task("", "", TaskStatus.NEW);
         fileBackedTasksManager.createTask(task);
 
-       //Не совсем понял какой тест нужно написать(
+
+        //Не совсем понял какой тест нужно написать(
     }
 }
 

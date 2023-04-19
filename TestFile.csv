@@ -1,5 +1,4 @@
 id,type,name,status,description,epic
-4,TASK,,NEW,
 0,EPIC,Поменять валюту,NEW,обмен рублей на доллары
 1,SUBTASK,взять кошелек,NEW,,0
 2,SUBTASK,пойти в банк,NEW,,0
