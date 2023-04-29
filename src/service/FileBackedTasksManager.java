@@ -172,7 +172,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
     }
 
     public static void main(String[] args) {
-        FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager("TestFile.csv");
+        FileBackedTasksManager fileBackedTasksManager = new FileBackedTasksManager("src/FilesTest/TestFile.csv");
         Epic epic = new Epic("Поменять валюту", "обмен рублей на доллары");
         fileBackedTasksManager.createEpic(epic);
         fileBackedTasksManager.getEpicById(epic.getId());
@@ -188,7 +188,7 @@ public class FileBackedTasksManager extends InMemoryTaskManager {
         fileBackedTasksManager.createTask(task);
 
 
-        //Не совсем понял какой тест нужно написать(
+
     }
 }
 
